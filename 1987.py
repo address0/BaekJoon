@@ -8,7 +8,7 @@ i, j = 0, 0
 al = arr[0][0]
 st = [[i, j]]
 als = [al]
-# visited = [[0]*c for _ in range(r)]
+visited = [[0]*c for _ in range(r)]
 time = 1
 result = 0
 while st:
