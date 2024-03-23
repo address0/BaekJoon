@@ -1,3 +1,5 @@
+# 시간초과
+
 import sys
 input = sys.stdin.readline
 m, n = map(int, input().split())
@@ -6,7 +8,7 @@ di = [1, 0, -1, 0]
 dj = [0, 1, 0, -1]
 day = 0
 while True:
-    change = False
+    st = []
     ripe = True
     for i in range(n):
         for j in range(m):
@@ -14,12 +16,14 @@ while True:
                 for k in range(4):
                     if 0 <= i+di[k] < n and 0 <= j+dj[k] < m:
                         if not toms[i+di[k]][j+dj[k]]:
-                            toms[i + di[k]][j + dj[k]] = 1
-                            change = True
+                            st.append([i + di[k], j + dj[k]])
             elif not toms[i][j]:
                 ripe = False
     day += 1
-    if not change or ripe:
+    if st:
+        for tom in st:
+            toms[tom[0]][tom[1]] = 1
+    if not st or ripe:
         break
 if not ripe:
     print(-1)
